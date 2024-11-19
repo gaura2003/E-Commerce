@@ -5,3 +5,6 @@
 [data-theme="dark"] {
   --theme-color: var(--dark-theme-color);
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
