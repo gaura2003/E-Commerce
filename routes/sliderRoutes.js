@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Route to get all slides
-router.get('/api/slider', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const slides = await Slider.find();
     if (!slides) {
@@ -34,7 +34,7 @@ router.get('/api/slider', async (req, res) => {
 });
 
 // Route for admin to add a new slide
-router.post('/api/slider', upload.single('image'), async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
   try {
     const { caption, link } = req.body;
 
@@ -60,7 +60,7 @@ router.post('/api/slider', upload.single('image'), async (req, res) => {
 });
 
 // Route to delete a slide
-router.delete('/api/slider/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const slide = await Slider.findByIdAndDelete(req.params.id);
     if (!slide) {
