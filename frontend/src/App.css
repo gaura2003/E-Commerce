@@ -1,0 +1,7 @@
+:root {
+  --theme-color: var(--light-theme-color); /* Default to light */
+}
+
+[data-theme="dark"] {
+  --theme-color: var(--dark-theme-color);
+}
