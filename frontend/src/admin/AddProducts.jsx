@@ -95,18 +95,21 @@ const handleAddCategory = async (e) => {
   const handleProductSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-
+  
     for (let key in productData) {
       formData.append(key, productData[key]);
     }
-
+  
+    const token = localStorage.getItem('token'); // Get token from localStorage
+  
     try {
       const response = await axios.post('http://localhost:5000/api/products', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`, // Add Authorization header with the token
         },
       });
-
+  
       alert('Product added successfully');
       console.log(response.data);
     } catch (error) {
@@ -114,6 +117,7 @@ const handleAddCategory = async (e) => {
       alert('Failed to add product');
     }
   };
+  
 
   return (
     <div className="space-y-8 ">

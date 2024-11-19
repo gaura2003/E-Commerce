@@ -100,19 +100,4 @@ router.get('/api/users', async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-// Delete User Route
-router.delete('/users/:id', async (req, res) => {
-  try {
-    const userId = req.params.id;
-    const deletedUser = await User.findByIdAndDelete(userId);
-    if (! deletedUser) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    res.json({ message: 'User deleted successfully' });
-    } catch (error) {
-    console.error('Error deleting user:', error);
-    res.status(500).send('Server Error');
-  }
-});
-
 export default router;

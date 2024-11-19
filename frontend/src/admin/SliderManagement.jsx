@@ -110,14 +110,25 @@ const SliderManagement = () => {
   // Add a new slider
   const handleAddSlider = async (e) => {
     e.preventDefault();
+    
+    const formDataToSend = new FormData();
+    formDataToSend.append('caption', formData.caption);
+    formDataToSend.append('link', formData.link);
+    formDataToSend.append('imageUrl', formData.imageUrl); // Assuming you are sending an image URL or file
+  
     try {
-      const res = await axios.post('http://localhost:5000/api/slider', formData);
+      const res = await axios.post('http://localhost:5000/api/slider', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       setSliders((prevSliders) => [...prevSliders, res.data]); // Use the returned slider from the backend
       setFormData({ caption: '', link: '', imageUrl: '' }); // Reset the form
     } catch (err) {
-      console.error('Error adding slider:', err);
+      console.error('Error adding slider:', err.response ? err.response.data : err.message);
     }
   };
+  
 
   // Delete a slider
   const handleDeleteSlider = async (id) => {

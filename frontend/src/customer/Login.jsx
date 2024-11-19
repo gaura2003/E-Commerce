@@ -82,11 +82,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post('http://localhost:5000/api/auth/login', formData );
       const { token, user } = response.data;
 
       // Save token in localStorage
       localStorage.setItem('token', token);
+
+        localStorage.setItem('token', response.data.token); // Store the token after login
+      
 
       // Set user data (username and role)
       login(user);
