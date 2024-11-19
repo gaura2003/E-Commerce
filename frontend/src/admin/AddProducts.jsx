@@ -116,11 +116,11 @@ const handleAddCategory = async (e) => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 ">
       {/* Create Category Section */}
-      <div>
+      <div className='flex justify-center items-center flex-col'>
         <h1 className="text-2xl font-bold mb-4">Create New Category</h1>
-        <form onSubmit={handleAddCategory} className="space-y-4">
+        <form onSubmit={handleAddCategory} className="space-y-4 flex justify-center items-center flex-col">
           <input
             type="text"
             value={categoryName}
@@ -144,7 +144,7 @@ const handleAddCategory = async (e) => {
         {loading ? (
           <div>Loading categories...</div> // Loading message
         ) : (
-          <form onSubmit={handleProductSubmit} className="space-y-4">
+          <form onSubmit={handleProductSubmit} className="space-y-4  grid grid-cols-3 gap-5">
             <input
               type="text"
               name="name"
@@ -152,7 +152,7 @@ const handleAddCategory = async (e) => {
               value={productData.name}
               onChange={handleProductChange}
               required
-              className="border p-2 w-full"
+              className="border  w-full"
             />
             <input
               type="text"
@@ -181,11 +181,12 @@ const handleAddCategory = async (e) => {
             >
               <option value="" disabled>Select Category</option>
               {categories.map((category) => (
-                <option key={category.id} value={category.name}>
+                <option key={category._id} value={category.name}>
                   {category.name}
                 </option>
               ))}
             </select>
+          
             <input
               type="number"
               name="stock"

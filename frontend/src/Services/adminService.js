@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'http://localhost:5000/api';  // No trailing slash
 const API_URL = 'http://localhost:5000/api';
 
 export const fetchUsers = async () => {
-  const response = await axios.get(`${API_URL}/users`);
+  const response = await axios.get(`${API_URL}/users`); // No /api
   return response.data;
 };
 

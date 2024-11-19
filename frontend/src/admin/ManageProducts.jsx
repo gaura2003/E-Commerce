@@ -17,8 +17,8 @@ const ManageProducts = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Manage Products</h1>
       <AddProduct/>
+      <h1 className="text-2xl font-bold mb-4 text-center">Manage Products</h1>
       <table className="min-w-full table-auto">
         <thead>
           <tr>
@@ -30,6 +30,7 @@ const ManageProducts = () => {
         </thead>
         <tbody>
           {products.map((product) => (
+            
             <tr key={product._id}>
               <td className="border p-2">{product.name}</td>
               <td className="border p-2">${product.price}</td>
